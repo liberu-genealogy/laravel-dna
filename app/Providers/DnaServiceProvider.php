@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Service provider for DNA-related services.
- * Registers and bootstraps the DNA services, including the DispatchMatchkitsJob.
+ * This service provider registers DNA-related services and bindings within the Laravel application,
+ * facilitating dependency injection and service management. It is responsible for setting up the
+ * DNA services, including the DispatchMatchkitsJob, ensuring they are available throughout the application.
  */
 
 namespace App\Providers;
@@ -20,6 +21,21 @@ class DnaServiceProvider extends ServiceProvider
         });
     }
 
+    public function boot()
+    {
+        // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
+    }
+}
+    }
+
+    public function boot()
+    {
+        // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
+    }
+}
+     *
+     * @return void
+     */
     public function boot()
     {
         // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
