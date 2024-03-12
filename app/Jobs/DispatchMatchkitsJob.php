@@ -14,6 +14,12 @@ class DispatchMatchkitsJob
 {
     use Dispatchable;
 
+    /**
+     * Handles the job to process matchkits.
+     * This function initiates the processing of matchkits within a try-catch block to manage exceptions.
+     * No parameters.
+     * Returns void.
+     */
     public function handle()
     {
         $this->processMatchkits();
