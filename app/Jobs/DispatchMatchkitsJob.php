@@ -1,3 +1,9 @@
+/**
+ * DispatchMatchkitsJob
+ *
+ * This file contains the DispatchMatchkitsJob class responsible for handling the dispatching of matchkits in the Laravel-dna application.
+ * It utilizes the MatchKitsFacade for processing matchkits.
+ */
 <?php
 
 /**
@@ -28,6 +34,12 @@ class DispatchMatchkitsJob
     private function processMatchkits()
     {
         try {
+            // Assuming the matchkits class has a method named 'process' for demonstration purposes
+            Matchkits::process();
+        } catch (\Exception $e) {
+            // Handle the exception appropriately
+        }
+    }
             // Assuming the matchkits class has a method named 'process' for demonstration purposes
             Matchkits::process();
         } catch (\Exception $e) {
