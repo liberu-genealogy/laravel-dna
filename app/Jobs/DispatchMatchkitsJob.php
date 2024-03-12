@@ -31,16 +31,15 @@ class DispatchMatchkitsJob
         $this->processMatchkits();
     }
 }
+    /**
+     * Processes the matchkits using the MatchKitsFacade.
+     *
+     * This private method attempts to process matchkits by invoking the 'process' method on the MatchKitsFacade. Exceptions are caught and handled appropriately.
+     * This method does not accept any parameters and does not return any value.
+     */
     private function processMatchkits()
     {
         try {
-            // Assuming the matchkits class has a method named 'process' for demonstration purposes
-            Matchkits::process();
-        } catch (\Exception $e) {
-            // Handle the exception appropriately
-        }
-    }
-            // Assuming the matchkits class has a method named 'process' for demonstration purposes
             Matchkits::process();
         } catch (\Exception $e) {
             // Handle the exception appropriately
