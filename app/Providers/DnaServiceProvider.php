@@ -9,6 +9,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use App\Jobs\DispatchMatchkitsJob;
+use LiburuGenealogy\PhpDna\Matchkits;
 
 class DnaServiceProvider extends ServiceProvider
 {
