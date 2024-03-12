@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Facades\MatchKitsFacade;
+use Src\Facades\MatchKitsFacade;
 use LiburuGenealogy\PhpDna\Matchkits;
 use Illuminate\Support\Facades\App;
 

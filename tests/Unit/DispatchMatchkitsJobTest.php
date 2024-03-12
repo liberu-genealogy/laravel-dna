@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use App\Jobs\DispatchMatchkitsJob;
+use Src\Jobs\DispatchMatchkitsJob;
 use LiburuGenealogy\PhpDna\Matchkits;
 use Mockery;
 use Illuminate\Support\Facades\Queue;
