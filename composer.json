@@ -1,0 +1,5 @@
+{
+    "require": {
+        "liberu-genealogy/php-dna": "^1.0"
+    }
+}
