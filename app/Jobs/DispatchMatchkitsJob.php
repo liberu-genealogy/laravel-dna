@@ -19,11 +19,6 @@ class DispatchMatchkitsJob
         $this->processMatchkits();
     }
 }
-            // This could involve logging the error or dispatching a job to handle the failure scenario
-            report($e);
-        }
-    }
-}
     private function processMatchkits()
     {
         try {
