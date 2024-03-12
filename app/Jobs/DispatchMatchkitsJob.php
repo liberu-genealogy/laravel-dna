@@ -26,6 +26,11 @@ class DispatchMatchkitsJob
         }
     }
 }
+    /**
+     * Processes the matchkits.
+     * 
+     * Utilizes the MatchKitsFacade to process matchkits. Handles exceptions by reporting them.
+     */
     private function processMatchkits()
     {
         try {
