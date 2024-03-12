@@ -20,4 +20,8 @@ class DnaServiceProviderTest extends TestCase
         $resolvedInstance = App::make('dispatchMatchkits');
         $this->assertInstanceOf(DispatchMatchkitsJob::class, $resolvedInstance);
     }
+
+    /**
+     * Additional test methods will be placed here.
+     */
 }
