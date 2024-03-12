@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\App;
 
 class DnaServiceProviderTest extends TestCase
 {
+    /**
+     * Test that the DispatchMatchkitsJob is correctly bound in the service container.
+     */
     public function testDispatchMatchkitsJobIsBoundCorrectly()
     {
         $resolvedInstance = App::make('dispatchMatchkits');
