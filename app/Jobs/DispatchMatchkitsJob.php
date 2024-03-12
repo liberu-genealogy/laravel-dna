@@ -16,6 +16,16 @@ class DispatchMatchkitsJob
 
     public function handle()
     {
+        $this->processMatchkits();
+    }
+}
+            // This could involve logging the error or dispatching a job to handle the failure scenario
+            report($e);
+        }
+    }
+}
+    private function processMatchkits()
+    {
         try {
             $matchkits = new Matchkits();
             // Assuming the matchkits class has a method named 'process' for demonstration purposes
@@ -26,9 +36,3 @@ class DispatchMatchkitsJob
             report($e);
         }
     }
-}
-            // This could involve logging the error or dispatching a job to handle the failure scenario
-            report($e);
-        }
-    }
-}
