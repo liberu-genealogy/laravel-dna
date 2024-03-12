@@ -21,10 +21,10 @@ class DispatchMatchkitsJob
     use Dispatchable;
 
     /**
-     * Handles the job to process matchkits.
-     * This function initiates the processing of matchkits within a try-catch block to manage exceptions.
-     * No parameters.
-     * Returns void.
+     * Handle the job to process matchkits.
+     *
+     * Initiates the processing of matchkits by calling the processMatchkits method.
+     * This method does not accept any parameters and does not return any value.
      */
     public function handle()
     {
