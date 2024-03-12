@@ -35,7 +35,7 @@ class DispatchMatchkitsJobTest extends TestCase
  * This file contains tests for the DispatchMatchkitsJob class, ensuring that the job dispatching process works as expected.
  */
     /**
-     * Clean up after the test.
+     * Clean up after the test, closing any Mockery instances.
      */
     /**
      * Test if the process method is called successfully.
