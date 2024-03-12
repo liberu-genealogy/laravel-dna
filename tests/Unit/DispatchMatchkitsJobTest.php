@@ -37,3 +37,18 @@ class DispatchMatchkitsJobTest extends TestCase
 /**
  * This file contains tests for the DispatchMatchkitsJob class, ensuring that the job dispatching process works as expected.
  */
+    /**
+     * Test that the processMatchkits method handles exceptions properly.
+     */
+    public function testProcessMatchkitsHandlesExceptionsProperly()
+    {
+        Queue::fake();
+        Log::shouldReceive('error')->once();
+
+        $mock = Mockery::mock(Matchkits::class);
+        $mock->shouldReceive('process')->once()->andThrow(\Exception::class);
+        $this->app->instance(Matchkits::class, $mock);
+
+        DispatchMatchkitsJob::dispatch();
+    }
+use Illuminate\Support\Facades\Log;
