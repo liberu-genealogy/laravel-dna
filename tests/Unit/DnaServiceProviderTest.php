@@ -1,5 +1,9 @@
 &lt;?php
 
+/**
+ * This file contains tests for the DnaServiceProvider, ensuring that service provider bindings work as expected.
+ */
+
 namespace Tests\Unit;
 
 use Tests\TestCase;
