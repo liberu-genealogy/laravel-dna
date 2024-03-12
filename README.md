@@ -15,7 +15,7 @@ This will download and install the `php-dna` package, making it available for us
 To dispatch the `DispatchMatchkitsJob` for processing DNA matchkits, you can use the following code snippet:
 
 ```php
-dispatch(new \App\Jobs\DispatchMatchkitsJob());
+dispatch(new \Src\Jobs\DispatchMatchkitsJob());
 ```
 
 This will enqueue the job for processing by the Laravel queue system. Make sure your queue worker is running to process the job.
