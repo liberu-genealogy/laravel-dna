@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Service provider for DNA-related services.
+ * Registers and bootstraps the DNA services, including the DispatchMatchkitsJob.
+ */
+
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
@@ -14,6 +19,17 @@ class DnaServiceProvider extends ServiceProvider
         });
     }
 
+    public function boot()
+    {
+        // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
+    }
+}
+    public function boot()
+    {
+        // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
+    }
+}
+     */
     public function boot()
     {
         // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
