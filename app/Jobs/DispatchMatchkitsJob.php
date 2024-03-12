@@ -26,7 +26,5 @@ class DispatchMatchkitsJob
             Matchkits::process();
         } catch (\Exception $e) {
             // Handle the exception appropriately
-            // This could involve logging the error or dispatching a job to handle the failure scenario
-            report($e);
         }
     }
