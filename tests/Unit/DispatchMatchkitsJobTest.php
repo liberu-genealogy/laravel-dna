@@ -16,6 +16,9 @@ class DispatchMatchkitsJobTest extends TestCase
         parent::tearDown();
     }
 
+    /**
+     * Test that the process method is called successfully when the DispatchMatchkitsJob is dispatched.
+     */
     public function testProcessIsCalledSuccessfully()
     {
         Queue::fake();
