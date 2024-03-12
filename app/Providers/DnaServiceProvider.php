@@ -24,14 +24,3 @@ class DnaServiceProvider extends ServiceProvider
         // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
     }
 }
-    public function boot()
-    {
-        // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
-    }
-}
-     */
-    public function boot()
-    {
-        // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
-    }
-}
