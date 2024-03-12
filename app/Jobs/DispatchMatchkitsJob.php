@@ -1,8 +1,10 @@
 <?php
 
 /**
- * Handles the dispatching of matchkits.
- * This job is responsible for processing matchkits using the Matchkits class.
+ * Job for Dispatching Matchkits.
+ * 
+ * This job is tasked with the initiation and processing of matchkits within the application.
+ * Utilizes the MatchKitsFacade for processing logic.
  */
 
 namespace App\Jobs;
@@ -24,11 +26,22 @@ class DispatchMatchkitsJob
         }
     }
 }
+    /**
+     * Processes the matchkits.
+     * 
+     * Utilizes the MatchKitsFacade to process matchkits. Handles exceptions by reporting them.
+     */
     private function processMatchkits()
     {
         try {
             // Assuming the matchkits class has a method named 'process' for demonstration purposes
             Matchkits::process();
+        } catch (\Exception $e) {
+            // Handle the exception appropriately
+            // This could involve logging the error or dispatching a job to handle the failure scenario
+            report($e);
+        }
+    }
         } catch (\Exception $e) {
             // Handle the exception appropriately
             // This could involve logging the error or dispatching a job to handle the failure scenario
