@@ -29,9 +29,16 @@ class DispatchMatchkitsJobTest extends TestCase
 
         Queue::assertNothingPushed();
 
-        DispatchMatchkitsJob::dispatch();
+        DispatchMatchkitsJob::dispatch($mock);
 
-        Queue::assertPushed(DispatchMatchkitsJob::class);
+        Queue::assertPushed(DispatchMatchkitsJob::class, function ($job) use ($mock) {
+            return $job->matchkits === $mock;
+        });
+
+        Queue::assertPushedOn('default', DispatchMatchkitsJob::class);
+        Queue::after(function () use ($mock) {
+            $mock->shouldHaveReceived('process')->once();
+        });
     }
 }
 /**
