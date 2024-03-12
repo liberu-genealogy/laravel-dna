@@ -50,12 +50,16 @@ class DispatchMatchkitsJobTest extends TestCase
     public function testProcessMatchkitsHandlesExceptionsProperly()
     {
         Queue::fake();
-        Log::shouldReceive('error')->once();
+        Log::shouldReceive('error')->once()->withArgs(function($message) {
+            return str_contains($message, 'Failed to process matchkits');
+        });
 
         $mock = Mockery::mock(Matchkits::class);
         $mock->shouldReceive('process')->once()->andThrow(\Exception::class);
         $this->app->instance(Matchkits::class, $mock);
 
-        DispatchMatchkitsJob::dispatch();
+        DispatchMatchkitsJob::dispatch($mock);
     }
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Log;
+use Exception;
