@@ -26,3 +26,17 @@ class MatchKitsFacadeTest extends TestCase
         $this->assertTrue($result);
     }
 }
+/**
+ * Unit tests for the MatchKitsFacade.
+ * Ensures that the facade correctly resolves to the Matchkits instance and that its methods are callable.
+ */
+/**
+ * Tests that the MatchKitsFacade resolves to the correct Matchkits instance.
+ * Asserts that the resolved instance is an instance of Matchkits class.
+ * @return void
+ */
+/**
+ * Tests that the process method is callable via the MatchKitsFacade.
+ * Asserts that the method call returns true, indicating successful processing.
+ * @return void
+ */

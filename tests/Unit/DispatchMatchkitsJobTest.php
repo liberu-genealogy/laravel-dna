@@ -1,3 +1,7 @@
+/**
+ * Unit tests for DispatchMatchkitsJob.
+ * Ensures that the job dispatching process works as expected and handles exceptions properly.
+ */
 &lt;?php
 
 namespace Tests\Unit;
@@ -50,5 +54,9 @@ class DispatchMatchkitsJobTest extends TestCase
         $this->app->instance(Matchkits::class, $mock);
 
         DispatchMatchkitsJob::dispatch();
+    }
+use Illuminate\Support\Facades\Log;
+    }
+use Illuminate\Support\Facades\Log;
     }
 use Illuminate\Support\Facades\Log;

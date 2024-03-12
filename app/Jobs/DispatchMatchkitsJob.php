@@ -1,8 +1,8 @@
 <?php
 
 /**
- * Handles the dispatching of matchkits.
- * This job is responsible for processing matchkits using the Matchkits class.
+ * Job for dispatching matchkits in the Laravel application.
+ * This job is responsible for initiating the processing of matchkits using the Matchkits class.
  */
 
 namespace App\Jobs;
@@ -30,6 +30,10 @@ class DispatchMatchkitsJob
         try {
             // Assuming the matchkits class has a method named 'process' for demonstration purposes
             Matchkits::process();
+        } catch (\Exception $e) {
+            // Handle the exception appropriately
+        }
+    }
         } catch (\Exception $e) {
             // Handle the exception appropriately
         }

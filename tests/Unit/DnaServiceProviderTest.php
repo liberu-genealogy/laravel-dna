@@ -1,7 +1,8 @@
 &lt;?php
 
 /**
- * This file contains tests for the DnaServiceProvider, ensuring that service provider bindings work as expected.
+ * Unit tests for DnaServiceProvider.
+ * Ensures that service provider bindings work as expected within the Laravel application.
  */
 
 namespace Tests\Unit;
@@ -19,5 +20,7 @@ class DnaServiceProviderTest extends TestCase
     {
         $resolvedInstance = App::make('dispatchMatchkits');
         $this->assertInstanceOf(DispatchMatchkitsJob::class, $resolvedInstance);
+    }
+}
     }
 }
