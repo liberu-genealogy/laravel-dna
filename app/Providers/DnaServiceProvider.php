@@ -26,6 +26,9 @@ class DnaServiceProvider extends ServiceProvider
         // Optional: Add event listeners or other bootstrapping code necessary for the php-dna library integration
     }
 }
+        /**
+        * Bootstraps any DNA services.
+        * 
         * This method is called after all other service providers have been registered, meaning you have access to all other services that have been registered by the framework.
         */
         public function boot()
