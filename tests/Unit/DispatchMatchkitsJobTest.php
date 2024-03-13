@@ -18,6 +18,9 @@ class DispatchMatchkitsJobTest extends TestCase
 
     /**
      * Test that the process method is called successfully when the DispatchMatchkitsJob is dispatched.
+     *
+     * @test
+     * @return void
      */
     public function testProcessIsCalledSuccessfully()
     {
