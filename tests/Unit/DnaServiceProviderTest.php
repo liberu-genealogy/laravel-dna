@@ -20,4 +20,17 @@ class DnaServiceProviderTest extends TestCase
         $resolvedInstance = App::make('dispatchMatchkits');
         $this->assertInstanceOf(DispatchMatchkitsJob::class, $resolvedInstance);
     }
+
+    /**
+     * Additional test methods will be placed here.
+     */
 }
+    /**
+     * Test that the DnaServiceProvider boots correctly.
+     */
+    public function testServiceProviderBootsCorrectly()
+    {
+        // Since the boot method is currently empty, this test will act as a placeholder.
+        // Future logic to be tested can be added here.
+        $this->assertTrue(true, 'Placeholder assertion until boot logic is implemented.');
+    }
