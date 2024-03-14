@@ -4,6 +4,7 @@
       "Src\\": "src/"
     }
   },
+  "name": "liberu-genealogy/laravel-dna",
   "require": {
     "liberu-genealogy/php-dna": "^1.0"
   }
