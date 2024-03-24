@@ -22,7 +22,11 @@ class DispatchMatchkitsJob implements ShouldQueue
 
     public function handle()
     {
-        // Logic to process matchkits
-        $this->matchkits->process();
+        try {
+            // Assuming the matchkits class has a method named 'process' for demonstration purposes
+            $this->matchkits->process();
+        } catch (\Exception $e) {
+            // Handle the exception appropriately
+        }
     }
 }
