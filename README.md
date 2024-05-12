@@ -5,10 +5,10 @@ Laravel 11 wrapper around php-dna
 To install the `php-dna` dependency in your Laravel project, run the following command in your terminal:
 
 ```
-composer require liberu-genealogy/php-dna
+composer require liberu-genealogy/laravel-dna
 ```
 
-This will download and install the `php-dna` package, making it available for use within your Laravel application.
+This will download and install the `laravel-dna` package, making it available for use within your Laravel application.
 
 ## Dispatching the DispatchMatchkitsJob
 
