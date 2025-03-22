@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Src\Jobs;
 
 use Illuminate\Bus\Queueable;
@@ -8,25 +10,23 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use LiburuGenealogy\PhpDna\Matchkits;
+use Throwable;
 
-class DispatchMatchkitsJob implements ShouldQueue
+final class DispatchMatchkitsJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $matchkits;
+    public function __construct(
+        private readonly Matchkits $matchkits
+    ) {}
 
-    public function __construct(Matchkits $matchkits)
-    {
-        $this->matchkits = $matchkits;
-    }
-
-    public function handle()
+    public function handle(): void
     {
         try {
-            // Assuming the matchkits class has a method named 'process' for demonstration purposes
             $this->matchkits->process();
-        } catch (\Exception $e) {
-            // Handle the exception appropriately
+        } catch (Throwable $e) {
+            report($e);
+            throw $e;
         }
     }
 }
