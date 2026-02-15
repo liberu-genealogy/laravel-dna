@@ -1,12 +1,18 @@
-&lt;?php
+<?php
+
+/**
+ * This file contains tests for the DispatchMatchkitsJob class, ensuring that the job dispatching process works as expected.
+ */
 
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Src\Jobs\DispatchMatchkitsJob;
-use LiburuGenealogy\PhpDna\Matchkits;
+use LaravelDna\Jobs\DispatchMatchkitsJob;
+use Dna\MatchKits;
 use Mockery;
 use Illuminate\Support\Facades\Queue;
+use Illuminate\Support\Facades\Log;
+use Exception;
 
 class DispatchMatchkitsJobTest extends TestCase
 {
@@ -17,15 +23,15 @@ class DispatchMatchkitsJobTest extends TestCase
     }
 
     /**
-     * Test that the process method is called successfully when the DispatchMatchkitsJob is dispatched.
+     * Test that the matchKits method is called successfully when the DispatchMatchkitsJob is dispatched.
      */
-    public function testProcessIsCalledSuccessfully()
+    public function testMatchKitsIsCalledSuccessfully()
     {
         Queue::fake();
 
-        $mock = Mockery::mock(Matchkits::class);
-        $mock->shouldReceive('process')->once()->andReturnNull();
-        $this->app->instance(Matchkits::class, $mock);
+        $mock = Mockery::mock(MatchKits::class);
+        $mock->shouldReceive('matchKits')->once()->andReturnNull();
+        $this->app->instance(MatchKits::class, $mock);
 
         Queue::assertNothingPushed();
 
@@ -36,30 +42,47 @@ class DispatchMatchkitsJobTest extends TestCase
         });
 
         Queue::assertPushedOn('default', DispatchMatchkitsJob::class);
-        Queue::after(function () use ($mock) {
-            $mock->shouldHaveReceived('process')->once();
+    }
+
+    /**
+     * Test that the job logs errors when matchKits throws an exception.
+     */
+    public function testJobLogsErrorsWhenExceptionOccurs()
+    {
+        Log::shouldReceive('error')->once()->withArgs(function($message) {
+            return str_contains($message, 'Failed to process matchkits') 
+                && str_contains($message, 'Test exception');
         });
+
+        $mock = Mockery::mock(MatchKits::class);
+        $mock->shouldReceive('matchKits')->once()->andThrow(new Exception('Test exception'));
+        
+        $job = new DispatchMatchkitsJob($mock);
+        
+        $exceptionThrown = false;
+        try {
+            $job->handle();
+        } catch (Exception $e) {
+            $exceptionThrown = true;
+        }
+        
+        $this->assertTrue($exceptionThrown, 'Expected exception to be thrown');
+    }
+
+    /**
+     * Test that the job re-throws exceptions after logging.
+     */
+    public function testJobReThrowsExceptionsAfterLogging()
+    {
+        Log::shouldReceive('error')->once();
+
+        $mock = Mockery::mock(MatchKits::class);
+        $mock->shouldReceive('matchKits')->once()->andThrow(new Exception('Test exception'));
+        
+        $job = new DispatchMatchkitsJob($mock);
+        
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Test exception');
+        $job->handle();
     }
 }
-/**
- * This file contains tests for the DispatchMatchkitsJob class, ensuring that the job dispatching process works as expected.
- */
-    /**
-     * Test that the processMatchkits method handles exceptions properly.
-     */
-    public function testProcessMatchkitsHandlesExceptionsProperly()
-    {
-        Queue::fake();
-        Log::shouldReceive('error')->once()->withArgs(function($message) {
-            return str_contains($message, 'Failed to process matchkits');
-        });
-
-        $mock = Mockery::mock(Matchkits::class);
-        $mock->shouldReceive('process')->once()->andThrow(\Exception::class);
-        $this->app->instance(Matchkits::class, $mock);
-
-        DispatchMatchkitsJob::dispatch($mock);
-    }
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Log;
-use Exception;
