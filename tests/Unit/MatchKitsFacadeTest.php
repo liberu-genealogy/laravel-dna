@@ -1,10 +1,10 @@
-&lt;?php
+<?php
 
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Src\Facades\MatchKitsFacade;
-use LiburuGenealogy\PhpDna\Matchkits;
+use LaravelDna\Facades\MatchKitsFacade;
+use Dna\MatchKits;
 use Illuminate\Support\Facades\App;
 
 class MatchKitsFacadeTest extends TestCase
@@ -12,17 +12,18 @@ class MatchKitsFacadeTest extends TestCase
     public function test_facade_resolves_to_matchkits_instance()
     {
         $matchKitsInstance = App::make('matchKits');
-        $this->assertInstanceOf(Matchkits::class, $matchKitsInstance);
+        $this->assertInstanceOf(MatchKits::class, $matchKitsInstance);
     }
 
-    public function test_process_method_is_callable_via_facade()
+    public function test_matchKits_method_is_callable_via_facade()
     {
-        $matchKitsMock = \Mockery::mock(Matchkits::class);
-        $matchKitsMock->shouldReceive('process')->once()->andReturnTrue();
+        $matchKitsMock = \Mockery::mock(MatchKits::class);
+        $matchKitsMock->shouldReceive('matchKits')->once()->andReturnNull();
 
         App::instance('matchKits', $matchKitsMock);
 
-        $result = MatchKitsFacade::process();
-        $this->assertTrue($result);
+        MatchKitsFacade::matchKits();
+        
+        \Mockery::close();
     }
 }

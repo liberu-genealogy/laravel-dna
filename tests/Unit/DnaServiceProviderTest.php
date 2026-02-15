@@ -1,4 +1,4 @@
-&lt;?php
+<?php
 
 /**
  * This file contains tests for the DnaServiceProvider, ensuring that service provider bindings work as expected.
@@ -7,7 +7,8 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-use Src\Jobs\DispatchMatchkitsJob;
+use LaravelDna\Jobs\DispatchMatchkitsJob;
+use Dna\MatchKits;
 use Illuminate\Support\Facades\App;
 
 class DnaServiceProviderTest extends TestCase
@@ -22,9 +23,17 @@ class DnaServiceProviderTest extends TestCase
     }
 
     /**
-     * Additional test methods will be placed here.
+     * Test that the MatchKits class is correctly bound as a singleton in the service container.
      */
-}
+    public function testMatchKitsIsBoundAsSingleton()
+    {
+        $instance1 = App::make(MatchKits::class);
+        $instance2 = App::make(MatchKits::class);
+        
+        $this->assertInstanceOf(MatchKits::class, $instance1);
+        $this->assertSame($instance1, $instance2, 'MatchKits should be bound as a singleton');
+    }
+
     /**
      * Test that the DnaServiceProvider boots correctly.
      */
@@ -34,3 +43,4 @@ class DnaServiceProviderTest extends TestCase
         // Future logic to be tested can be added here.
         $this->assertTrue(true, 'Placeholder assertion until boot logic is implemented.');
     }
+}

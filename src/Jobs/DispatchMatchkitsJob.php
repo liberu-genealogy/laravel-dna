@@ -1,13 +1,13 @@
 <?php
 
-namespace Src\Jobs;
+namespace LaravelDna\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use LiburuGenealogy\PhpDna\Matchkits;
+use Dna\MatchKits;
 
 class DispatchMatchkitsJob implements ShouldQueue
 {
@@ -15,7 +15,7 @@ class DispatchMatchkitsJob implements ShouldQueue
 
     protected $matchkits;
 
-    public function __construct(Matchkits $matchkits)
+    public function __construct(MatchKits $matchkits)
     {
         $this->matchkits = $matchkits;
     }
@@ -23,10 +23,12 @@ class DispatchMatchkitsJob implements ShouldQueue
     public function handle()
     {
         try {
-            // Assuming the matchkits class has a method named 'process' for demonstration purposes
-            $this->matchkits->process();
+            // Process the match kits - calling matchKits() method from php-dna library
+            $this->matchkits->matchKits();
         } catch (\Exception $e) {
             // Handle the exception appropriately
+            \Log::error('Failed to process matchkits: ' . $e->getMessage());
+            throw $e;
         }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Src\Facades;
+namespace LaravelDna\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
