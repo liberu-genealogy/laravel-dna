@@ -35,11 +35,15 @@ class DnaServiceProviderTest extends TestCase
     }
 
     /**
-     * Test that the DnaServiceProvider boots correctly.
+     * Test that the DnaServiceProvider boots correctly without errors.
      */
     public function testServiceProviderBootsCorrectly()
     {
-        // Mark as incomplete until boot logic is implemented
-        $this->markTestIncomplete('Boot logic not yet implemented - placeholder test for future use.');
+        // Verify that the service provider can be booted without errors
+        // Since the boot method is currently empty, we just verify it doesn't throw
+        $this->app->boot();
+        
+        // If we get here without exceptions, the boot was successful
+        $this->assertTrue(true);
     }
 }
