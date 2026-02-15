@@ -39,8 +39,7 @@ class DnaServiceProviderTest extends TestCase
      */
     public function testServiceProviderBootsCorrectly()
     {
-        // Since the boot method is currently empty, this test will act as a placeholder.
-        // Future logic to be tested can be added here.
-        $this->assertTrue(true, 'Placeholder assertion until boot logic is implemented.');
+        // Mark as incomplete until boot logic is implemented
+        $this->markTestIncomplete('Boot logic not yet implemented - placeholder test for future use.');
     }
 }

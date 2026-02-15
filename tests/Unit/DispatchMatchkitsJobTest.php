@@ -58,11 +58,8 @@ class DispatchMatchkitsJobTest extends TestCase
         
         $job = new DispatchMatchkitsJob($mock);
         
-        try {
-            $job->handle();
-            $this->fail('Expected exception was not thrown');
-        } catch (Exception $e) {
-            $this->assertEquals('Test exception', $e->getMessage());
-        }
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage('Test exception');
+        $job->handle();
     }
 }
