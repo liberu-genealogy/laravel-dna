@@ -13,14 +13,10 @@ class DnaServiceProvider extends ServiceProvider
     public function register()
     {
         // Register Visualization as a singleton
-        $this->app->singleton(Visualization::class, function($app) {
-            return new Visualization();
-        });
+        $this->app->singleton(Visualization::class);
 
         // Register Triangulation as a singleton
-        $this->app->singleton(Triangulation::class, function($app) {
-            return new Triangulation();
-        });
+        $this->app->singleton(Triangulation::class);
 
         // Register MatchKits as a singleton with its dependencies resolved from container
         $this->app->singleton(MatchKits::class, function($app) {

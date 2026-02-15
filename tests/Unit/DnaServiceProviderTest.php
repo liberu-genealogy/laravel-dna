@@ -9,6 +9,8 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use LaravelDna\Jobs\DispatchMatchkitsJob;
 use Dna\MatchKits;
+use Dna\Visualization;
+use Dna\Triangulation;
 use Illuminate\Support\Facades\App;
 
 class DnaServiceProviderTest extends TestCase
@@ -39,11 +41,12 @@ class DnaServiceProviderTest extends TestCase
      */
     public function testServiceProviderBootsCorrectly()
     {
-        // Verify that the service provider can be booted without errors
-        // Since the boot method is currently empty, we just verify it doesn't throw
-        $this->app->boot();
-        
-        // If we get here without exceptions, the boot was successful
-        $this->assertTrue(true);
+        // Verify that all bindings are registered correctly after boot
+        // Orchestra Testbench handles bootstrapping, so we just verify the bindings exist
+        $this->assertTrue($this->app->bound(MatchKits::class));
+        $this->assertTrue($this->app->bound(Visualization::class));
+        $this->assertTrue($this->app->bound(Triangulation::class));
+        $this->assertTrue($this->app->bound('matchKits'));
+        $this->assertTrue($this->app->bound('dispatchMatchkits'));
     }
 }
