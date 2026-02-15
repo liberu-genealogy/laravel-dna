@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Dna\MatchKits;
 
 class DispatchMatchkitsJob implements ShouldQueue
@@ -27,7 +28,7 @@ class DispatchMatchkitsJob implements ShouldQueue
             $this->matchkits->matchKits();
         } catch (\Exception $e) {
             // Handle the exception appropriately
-            \Log::error('Failed to process matchkits: ' . $e->getMessage());
+            Log::error('Failed to process matchkits: ' . $e->getMessage());
             throw $e;
         }
     }

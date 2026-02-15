@@ -45,13 +45,33 @@ class DispatchMatchkitsJobTest extends TestCase
     }
 
     /**
-     * Test that the processMatchkits method handles exceptions properly.
+     * Test that the job logs errors when matchKits throws an exception.
      */
-    public function testProcessMatchkitsHandlesExceptionsProperly()
+    public function testJobLogsErrorsWhenExceptionOccurs()
     {
         Log::shouldReceive('error')->once()->withArgs(function($message) {
-            return str_contains($message, 'Failed to process matchkits');
+            return str_contains($message, 'Failed to process matchkits') 
+                && str_contains($message, 'Test exception');
         });
+
+        $mock = Mockery::mock(MatchKits::class);
+        $mock->shouldReceive('matchKits')->once()->andThrow(new Exception('Test exception'));
+        
+        $job = new DispatchMatchkitsJob($mock);
+        
+        try {
+            $job->handle();
+        } catch (Exception $e) {
+            // Exception is expected, we just want to verify logging happened
+        }
+    }
+
+    /**
+     * Test that the job re-throws exceptions after logging.
+     */
+    public function testJobReThrowsExceptionsAfterLogging()
+    {
+        Log::shouldReceive('error')->once();
 
         $mock = Mockery::mock(MatchKits::class);
         $mock->shouldReceive('matchKits')->once()->andThrow(new Exception('Test exception'));
